@@ -6,8 +6,9 @@ class LoginScreen extends StatelessWidget {
   // Text Field controllers
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final VoidCallback registerNowCallback;
 
-  LoginScreen({super.key});
+  LoginScreen({super.key, required this.registerNowCallback});
 
   void loginFunction() {}
 
@@ -48,13 +49,13 @@ class LoginScreen extends StatelessWidget {
               isPassword: true,
               controller: _passwordController,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 25),
             // login
             CustomButton(
               text: "Login",
               onTap: loginFunction,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 25),
             // register
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -65,11 +66,14 @@ class LoginScreen extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
-                Text(
-                  "Register now!",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
+                GestureDetector(
+                  onTap: registerNowCallback,
+                  child: Text(
+                    "Register now!",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                 )
               ],

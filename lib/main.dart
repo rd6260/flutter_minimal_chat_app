@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_minimal_chat_app/screens/login_screen.dart';
+import 'package:flutter_minimal_chat_app/screens/auth_screen.dart';
 import 'package:flutter_minimal_chat_app/themes/light_mode.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginScreen(),
+      home: AuthScreen(),
       theme: lightMode,
       debugShowCheckedModeBanner: false,
     );
