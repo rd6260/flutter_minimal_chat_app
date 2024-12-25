@@ -32,7 +32,7 @@ class RegisterScreen extends StatelessWidget {
 
             // Welcome message
             Text(
-              "Let's create an account for you",
+              "Welcome back we missed you!",
               style: TextStyle(
                 color: Theme.of(context).colorScheme.primary,
                 fontSize: 20,
