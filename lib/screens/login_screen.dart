@@ -78,7 +78,11 @@ class LoginScreen extends StatelessWidget {
             // login
             CustomButton(
               text: "Login",
-              onTap: () => loginFunction(context),
+              onTap: () {
+                debugPrint("here1");
+                print("here1");
+                loginFunction(context);
+              },
             ),
             const SizedBox(height: 25),
             // register
