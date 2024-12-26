@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_minimal_chat_app/utils/auth_service.dart';
 import 'package:flutter_minimal_chat_app/widgets/custom_button.dart';
 import 'package:flutter_minimal_chat_app/widgets/custom_textfield.dart';
 
@@ -10,7 +11,31 @@ class LoginScreen extends StatelessWidget {
 
   LoginScreen({super.key, required this.registerNowCallback});
 
-  void loginFunction() {}
+  void loginFunction(BuildContext context) async {
+    // TODO: make the alert dialog system better... Its scapy rn
+    //
+    // auth service
+    final authService = AuthService();
+
+    // try login
+    try {
+      await authService.signInWithEmailPassword(
+        _phoneNumberController.text,
+        _passwordController.text,
+      );
+    }
+    // cath error
+    catch (e) {
+      if (!context.mounted) return;
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Something went wrong!"),
+          content: Text(e.toString()),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +78,7 @@ class LoginScreen extends StatelessWidget {
             // login
             CustomButton(
               text: "Login",
-              onTap: loginFunction,
+              onTap: () => loginFunction(context),
             ),
             const SizedBox(height: 25),
             // register
