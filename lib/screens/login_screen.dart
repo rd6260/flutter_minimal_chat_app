@@ -79,8 +79,6 @@ class LoginScreen extends StatelessWidget {
             CustomButton(
               text: "Login",
               onTap: () {
-                debugPrint("here1");
-                print("here1");
                 loginFunction(context);
               },
             ),

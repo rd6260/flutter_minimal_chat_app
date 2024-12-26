@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_minimal_chat_app/screens/login_screen.dart';
 import 'package:flutter_minimal_chat_app/screens/register_screen.dart';
 
+
+enum _AuthScreenType {
+  loginScreen,
+  registrationScreen,
+}
+
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
 
@@ -10,20 +16,20 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  String authScreenType = "login";
+  _AuthScreenType authScreenType = _AuthScreenType.loginScreen;
 
   void loginAndRegisterScreenSwitch() {
-    if (authScreenType == "login") {
-      authScreenType = "register";
+    if (authScreenType == _AuthScreenType.loginScreen) {
+      authScreenType = _AuthScreenType.registrationScreen;
     } else {
-      authScreenType = "login";
+      authScreenType = _AuthScreenType.loginScreen;
     }
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    if (authScreenType == "login") {
+    if (authScreenType == _AuthScreenType.loginScreen) {
       return LoginScreen(
         registerNowCallback: loginAndRegisterScreenSwitch,
       );
