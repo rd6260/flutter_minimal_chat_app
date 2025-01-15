@@ -18,6 +18,7 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   _AuthScreenType authScreenType = _AuthScreenType.loginScreen;
 
+
   void loginAndRegisterScreenSwitch() {
     if (authScreenType == _AuthScreenType.loginScreen) {
       authScreenType = _AuthScreenType.registrationScreen;

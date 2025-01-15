@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_minimal_chat_app/utils/auth_service.dart';
 import 'package:flutter_minimal_chat_app/widgets/custom_button.dart';
 import 'package:flutter_minimal_chat_app/widgets/custom_textfield.dart';
 
@@ -12,7 +13,28 @@ class RegisterScreen extends StatelessWidget {
   final VoidCallback loginNowCallback;
   RegisterScreen({super.key, required this.loginNowCallback});
 
-  void registerFunction() {}
+  void registerFunction() {
+    final auth = AuthService();
+
+    // if password and confirm password is not matching then show alert
+    if (_passwordController.text != _confirmPasswordController.text) {
+      if (!context.mounted) return;
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Something went wrong!"),
+          content: Text(e.toString()),
+        ),
+      );
+
+    }
+
+
+    auth.signInWithEmailPassword(
+      _phoneNumberController.text,
+      _passwordController.text,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
